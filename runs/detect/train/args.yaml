@@ -1,16 +1,16 @@
 task: detect
 mode: train
-model: yolov8n.pt
-data: data.yaml
-epochs: 200
+model: yolov8s.pt
+data: /home/rishit/MajorProject/AI-Based-Road-Inspection-System/src/results/YOLOv8/Detection2-8/data.yaml
+epochs: 100
 time: null
 patience: 100
-batch: 16
+batch: 4
 imgsz: 640
 save: true
 save_period: -1
 cache: false
-device: cpu
+device: null
 workers: 8
 project: null
 name: train
@@ -103,4 +103,4 @@ erasing: 0.4
 crop_fraction: 1.0
 cfg: null
 tracker: botsort.yaml
-save_dir: c:\Users\rishi\OneDrive\Desktop\Major Project\AI Based Road inspection system\runs\detect\train
+save_dir: /home/rishit/MajorProject/AI-Based-Road-Inspection-System/runs/detect/train
