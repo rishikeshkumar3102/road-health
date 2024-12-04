@@ -82,7 +82,6 @@ def main():
         """
     st.markdown(f"<script>{js_code}</script>", unsafe_allow_html=True)
             
-    st.image("logo.png")
     
     ##MainMenu
     
@@ -93,7 +92,6 @@ def main():
                 "Project Information",
                 "Model Information",           
                 "Predict Defects",
-                "Contributors"
             ],
         )
     
@@ -186,14 +184,6 @@ def main():
                 temp_file.close()
                 os.remove(video_path_output)
            
-                 
-            
-    elif selected == "Contributors":
-        st.subheader("Contributors")
-        st.markdown("<b><u>Project Leads :</u></b> Eeman Majumder, Vaasu Bisht , Cesar Tinoco & Mario Rodriguez", unsafe_allow_html=True)
-        st.markdown("<b><u>Management & HR:</u><b> Sakshi Sawarkar ", unsafe_allow_html=True)
-        st.markdown("<b><u>Project Contributors :</u></b> \n  ", unsafe_allow_html=True)
-        st.write("""1.  Adeeba Rashid \n 2.  Aditya Narayan Jha \n 3.  Akshit Srivastava \n 4.  Ameya Sharma \n 5.  Ananya Tiwari \n 6.  Annirudha Kumar \n 7.  Arpit Sengar \n 8.  Arjita Arora \n 9.  Aryan Rai \n 10.  Ashwin J R \n 11. Bhargav Patki \n 12. Bhushan Kumar \n 13. Darshnik Rohal \n 14. Debadrita Dey \n 15. Devanshi Pathak \n 16. Enrique Unzueta \n 17. Jyotsna Bhatia \n 18. Mohit Kumar Saw \n 19. Mrunmayee Ketkar \n 20. Md. Anas Mondol \n 21. Mudit Gaur \n 22. Navneet Gupta \n 23. Navneet Lamba 24. Pujan Shrestha \n 25. Punit Kaushik \n 26. Pushpendra Kushwaha \n 27. Qurat ul aaein \n 28. Raj Mansuriya\n 29. Ram Vikram Singh \n 30. Sergio Reyes \n 31. Shreya Tripathi \n 32. Simone Reynoso \n 33. Soumyashis Sarkar \n 34. Sourav Dutta \n 35. Suhani Thakur \n 36. Swetha Thampi M \n 37. Tarandeep Singh Juneja \n 38. Virat Srivastava \n 39. Yahya Ismaiel \n """)
 
     elif selected == "Model Information":
         st.subheader('Introduction')
