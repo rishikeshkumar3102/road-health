@@ -2,7 +2,7 @@
 Detection2 - v8 2023-06-04 6:58am
 ==============================
 
-This dataset was exported via roboflow.com on June 4, 2023 at 1:33 AM GMT
+This dataset was exported via roboflow.com on N, 2023 at 1:33 AM GMT
 
 Roboflow is an end-to-end computer vision platform that helps you
 * collaborate with your team on computer vision projects

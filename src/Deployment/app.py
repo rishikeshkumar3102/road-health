@@ -66,8 +66,6 @@ def process_video(video_path):
     return video_path_output
 
 
-
-        
 def main():
 
     with open("styles.css", "r") as source_style:
@@ -78,7 +76,7 @@ def main():
     Header = st.container()
     js_code = """
         const elements = window.parent.document.getElementsByTagName('footer');
-        elements[0].innerHTML = "Mexico x Omdena VIT Bhopal Local Chapter " + new Date().getFullYear();
+        elements[0].innerHTML = "Siddaganga Institute of Technology " + new Date().getFullYear();
         """
     st.markdown(f"<script>{js_code}</script>", unsafe_allow_html=True)
             
