@@ -1,4 +1,2 @@
 libgl1
 ffmpeg
-python3.10
-python3-distutils
