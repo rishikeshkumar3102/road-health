@@ -8,3 +8,4 @@ streamlit_option_menu==0.3.2
 ultralytics==8.0.112
 zlib-ng==0.5.1
 altair==4.1.0
+wheels/pillow-11.1.0-pp310-pypy310_pp73-manylinux_2_28_x86_64.whl
