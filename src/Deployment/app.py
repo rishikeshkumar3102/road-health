@@ -14,6 +14,7 @@ import shutil
 from ultralytics.yolo.utils.plotting import Annotator
 from cv2 import cvtColor
 import os
+import time
 
 #Importing the model
 
@@ -136,52 +137,77 @@ def main():
         st.write(Project_goal)
         
     elif selected == "Predict Defects": 
-        
-  
         st.sidebar.subheader('Settings')
         
         options = st.sidebar.radio(
             'Options:', ('Image', 'Video'), index=1)
-        
+    
         st.sidebar.markdown("---")
-         # Image
+    
+        # Image
         if options == 'Image':
             upload_img_file = st.sidebar.file_uploader(
                 'Upload Image', type=['jpg', 'jpeg', 'png'])
             if upload_img_file is not None:
-                file_bytes = np.asarray(
-                    bytearray(upload_img_file.read()), dtype=np.uint8)
+                # Start timing
+                start_time = time.time()
+            
+                file_bytes = np.asarray(bytearray(upload_img_file.read()), dtype=np.uint8)
                 img = cv2.imdecode(file_bytes, 1)
-    
+
                 prediction = model.predict(img)
                 res_plotted = prediction[0].plot()
+            
+                # End timing
+                end_time = time.time()
+                elapsed_time = end_time - start_time
+
+                # Display timing information
+                st.write(f"Processing time: {elapsed_time:.2f} seconds")
+
                 image_pil = Image.fromarray(res_plotted)
                 image_bytes = io.BytesIO()
                 image_pil.save(image_bytes, format='PNG')
 
-                st.image(image_bytes, caption='Predicted Image', use_column_width=True)
-                
+                st.image(image_bytes, caption='Predicted Image', use_container_width=True)
+            
+        # Video
         if options == 'Video':
             upload_vid_file = st.sidebar.file_uploader(
                 'Upload Video', type=['mp4', 'avi', 'mkv']
-                )
+            )
             if upload_vid_file is not None:
-            # Save the uploaded video file temporarily
+                # Save the uploaded video file temporarily
                 temp_file = tempfile.NamedTemporaryFile(delete=False)
                 temp_file.write(upload_vid_file.read())
 
-                # Process the video frames and get the output video file path
-                video_path_output = process_video(temp_file.name)
+                # Start timing
+                start_time = time.time()
 
-                # Display the processed video using the st.video function
+                # Process the video
+                video_path_output = process_video(temp_file.name)
+            
+                # End timing
+                end_time = time.time()
+                elapsed_time = end_time - start_time
+
+                # Calculate frame rate
+                cap = cv2.VideoCapture(temp_file.name)
+                frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+                cap.release()
+                frame_rate = frame_count / elapsed_time if elapsed_time > 0 else 0
+
+                # Display timing information
+                st.write(f"Processing time: {elapsed_time:.2f} seconds")
+                st.write(f"Total frames: {frame_count:.2f} frames")
+                st.write(f"Processed frame rate: {frame_rate:.2f} FPS")
+
+                # Display the processed video
                 st.video(video_path_output)
-                
-                
 
                 # Remove the temporary files
                 temp_file.close()
                 os.remove(video_path_output)
-           
 
     elif selected == "Model Information":
         st.subheader('Introduction')
